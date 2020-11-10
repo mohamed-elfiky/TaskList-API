@@ -1,0 +1,2 @@
+class TlistController < ApplicationController
+end
