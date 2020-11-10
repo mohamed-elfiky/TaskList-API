@@ -1,0 +1,2 @@
+class Tlist < ApplicationRecord
+end
