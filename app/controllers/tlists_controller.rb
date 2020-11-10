@@ -5,4 +5,9 @@ class TlistsController < ApplicationController
         render json: @tlists.to_json
     end
 
+    def show
+        @tlist = Tlist.find(params[:id])
+        render json: @tlist.to_json
+    end
+
 end
