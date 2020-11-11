@@ -1,5 +1,5 @@
 FactoryBot.define do 
-    factory :staic_tlist do
+    factory :staic_tlist, class: Tlist do
         name  'list1'
         owner 'mohamed'
     end

@@ -43,11 +43,10 @@ RSpec.describe 'Tlist requests', type: :request do
 
     #God i hate post so much
     describe 'Post /tlists' do 
-        let(:valid_list) {build(:staic_tlist)}
         context ' creates list successfuly i.e  passes validations  ' do 
             before(:each) do 
-                allow(Tlist).to receive(:create).with(:valid_list)
-                post('/tlists', params: { name: :valid_list.name, owner: :valid_list.owner })
+                allow(Tlist).to receive(:create!)
+                post('/tlists', params: { name: "any", owner: "man" })
             end
             it 'returns status created (201) ' do 
                 expect(response).to have_http_status(:created)
@@ -57,7 +56,7 @@ RSpec.describe 'Tlist requests', type: :request do
             #ok i got it it's a bad idea to bypass your validations ... but i am not testing my 
             #validataions i have already tesed them >>  i will use stubs man
             it 'creates a list ' do 
-                expect(Tlist).to have_received(:create).with(:valide_list)
+                expect(Tlist).to have_received(:create!)
             end
         end
 

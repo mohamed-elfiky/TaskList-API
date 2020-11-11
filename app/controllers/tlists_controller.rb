@@ -10,4 +10,15 @@ class TlistsController < ApplicationController
         render json: @tlist.to_json
     end
 
+    def create
+        @tlist = Tlist.create!(tlist_params)
+        render json:  @tlist , status: :created 
+    end
+
+    private
+    ###### strong params  #####
+    def tlist_params
+        params.permit(:name, :owner)
+    end
+
 end
