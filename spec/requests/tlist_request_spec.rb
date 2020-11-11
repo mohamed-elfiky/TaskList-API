@@ -71,4 +71,34 @@ RSpec.describe 'Tlist requests', type: :request do
         end
     end
 
+    describe 'Put/tlists/:id' do 
+        let!(:tlist) {create(:random_tlist)}
+        let(:tlist_id){Tlist.first.id}
+        let(:valid_list) {build(:staic_tlist)}
+       
+        context 'if the list exists' do 
+            before(:each) do 
+                put("/tlists/#{tlist_id}", params: {name: valid_list.name})
+            end
+            it 'returns staus code 200 ' do 
+                expect(response).to have_http_status(:ok)
+            end
+
+            it 'it moidfies the list' do 
+                expect(Tlist.find(tlist_id).name).to eq(valid_list.name)
+            end
+
+
+        end
+        context 'if the list does not exist' do 
+            before(:each) do 
+                put("/tlists/4", params: {name: valid_list.name})
+            end
+            it 'return status code 404 not found' do 
+                expect(response).to have_http_status(:not_found)
+            end
+        end
+    end
+
+    
 end
