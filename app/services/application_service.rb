@@ -1,5 +1,5 @@
 # base class for our service objects
-calss ApplicationSercive 
+class ApplicationService 
     def self.call(*args, &block) 
         new(*args, &block).call
     end

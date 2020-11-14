@@ -1,7 +1,7 @@
 module AuthManager 
     #sorry for the bad naming i am just following a convention
     #for naming POROs
-    class RequestAuthorizator < ApplicationService
+    class RequestAuthorizator < ApplicationSercive
         attr_reader :header
         
         def initialize (header = {})
